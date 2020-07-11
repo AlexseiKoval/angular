@@ -9,7 +9,7 @@
         <form>
             <div *ngIf="!bascetClear; else elseBlock" class="form-group">
                 <label class="form-control" *ngFor="let row of dataService.bascet">
-                    {{row.title}}
+                   <small>{{row.title}}</small>
                     <button type="button" class="close" aria-label="Close" (click)="dataService.delToBascet(row)">
                         <span aria-hidden="true">&times;</span>
                     </button>

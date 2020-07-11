@@ -8,7 +8,7 @@
                     <img [src]="item.thumbnailUrl" class="card-img-top" alt="...">
                     <div class="card-body" style="height: 120px;">
                         <h5 class="card-title">ID: {{item.id}} </h5>
-                        <p class="card-text"> {{item.title}} </p>
+                        <div class="card-text" [innerHTML] = "getTextPre(item.title)"></div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">
