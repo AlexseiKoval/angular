@@ -1,0 +1,43 @@
+<div class="jumbotron jumbotron-fluid">
+    <div *ngIf="loading; else elseBlock" class="container">
+
+        <div class="row">
+            <div *ngFor="let item of dataService.products | productsFilter : dataService.searchString | paginationFilter
+                : dataService.currentPageProducts " class="col-sm-4">
+                <div class="card">
+                    <img [src]="item.thumbnailUrl" class="card-img-top" alt="...">
+                    <div class="card-body" style="height: 120px;">
+                        <h5 class="card-title">ID: {{item.id}} </h5>
+                        <p class="card-text"> {{item.title}} </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <a class="nav-link" routerLink="/product/{{item.id}}">Open product <span
+                                    class="sr-only">(current)</span></a>
+                        </small>
+                    </div>
+                </div>
+                <hr />
+            </div>
+
+        </div>
+
+        <hr />
+
+        <nav aria-label="Page navigation example">
+            <ngb-pagination [collectionSize]="(dataService.products | productsFilter : dataService.searchString).length"
+                [(page)]="dataService.currentPageProducts" [maxSize]="5" [rotate]="true" [boundaryLinks]="true">
+            </ngb-pagination>
+        </nav>
+    </div>
+
+    <ng-template #elseBlock>
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <h1>Loading . . . </h1>
+            </div>
+        </div>
+    </ng-template>
+</div>

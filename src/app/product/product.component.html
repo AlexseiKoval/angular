@@ -1,0 +1,51 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div *ngIf="!!item" class="row">
+            <div class="col-sm-7">
+                <div class="card">
+                    <img [src]="item.url" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ID: {{item.id}} </h5>
+                        <p class="card-text"> {{item.title}} </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <a class="nav-link" routerLink="">Back<span class="sr-only">(current)</span></a>
+                        </small>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-4">
+                <hr />
+                <button class="btn btn-outline-success my-2 my-sm-0" (click) = "dataService.delToBascet(product)">Add to Bascet</button>
+                <hr />
+                <p>Custom rating template provided as child element</p>
+
+                <ngb-rating [(rate)]="currentRate">
+                    <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+                    </ng-template>
+                </ngb-rating>
+                <hr />
+                <pre>Rate: <b>{{currentRate}}</b></pre>
+                <h2>Bascet : </h2>
+                <hr />
+                <ul>
+                    <li>
+                        fdgdfgdg
+                    </li>
+                    <li>
+                        fdgdfgdg
+                    </li>
+                    <li>
+                        fdgdfgdg
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
