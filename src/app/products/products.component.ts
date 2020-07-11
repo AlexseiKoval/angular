@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  getTextPre(title){
+  getTextPre(title) {
     return title.replace(this.dataService.searchString, `<strong>${this.dataService.searchString}</strong>`)
   }
   ngOnInit(): void {
