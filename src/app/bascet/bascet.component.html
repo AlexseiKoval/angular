@@ -7,16 +7,17 @@
     </div>
     <div class="modal-body">
         <form>
-            <div class="form-group">
-                <label for="dateOfBirth">Date of birth</label>
-                <div class="input-group">
-                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                        #dp="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                    </div>
-                </div>
+            <div *ngIf="!bascetClear; else elseBlock" class="form-group">
+                <label class="form-control" *ngFor="let row of dataService.bascet">
+                    {{row.title}}
+                    <button type="button" class="close" aria-label="Close" (click)="dataService.delToBascet(row)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </label>
             </div>
+            <ng-template #elseBlock>
+                <h2>Bascet Clear</h2>
+            </ng-template>
         </form>
     </div>
     <div class="modal-footer">
@@ -24,6 +25,4 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Bascet</button>
-
- 
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">{{returnBascet()}}Bascet</button>

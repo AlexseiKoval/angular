@@ -32,7 +32,8 @@ export class DataService {
   }
 
   delToBascet(productBascet) {
-    return this.bascet.filter(row => row.id.toString() !== productBascet.id.toString())
+    this.bascet = this.bascet.filter(row => row.id.toString() !== productBascet.id.toString())
+    console.log('del')
   }
 
   fetchProducts(): Observable<product[]> {

@@ -21,7 +21,8 @@
             </div>
             <div class="col-sm-4">
                 <hr />
-                <button class="btn btn-outline-success my-2 my-sm-0" (click) = "dataService.delToBascet(product)">Add to Bascet</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" (click)="dataService.addToBascet(item)">Add to
+                    Bascet</button>
                 <hr />
                 <p>Custom rating template provided as child element</p>
 
@@ -35,15 +36,10 @@
                 <h2>Bascet : </h2>
                 <hr />
                 <ul>
-                    <li>
-                        fdgdfgdg
+                    <li *ngFor="let row of dataService.bascet">
+                        {{row.title}}
                     </li>
-                    <li>
-                        fdgdfgdg
-                    </li>
-                    <li>
-                        fdgdfgdg
-                    </li>
+
                 </ul>
             </div>
         </div>

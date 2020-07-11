@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../data.service'
 
 @Component({
   selector: 'app-bascet',
@@ -13,10 +14,17 @@ export class BascetComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, public dataService: DataService) { }
+
+  public bascetClear = true
+  returnBascet() {
+    const bascetLength = this.dataService.bascet.reduce((acum, row) => acum + 1, 0)
+    this.bascetClear = !bascetLength
+    return `(${bascetLength || "Clear"})`
+  }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
